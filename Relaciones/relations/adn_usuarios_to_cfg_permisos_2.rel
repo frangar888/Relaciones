@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/cfg_permisos_2",
+items:[
+{foreignColumnName:"user_id",primaryDataProviderID:"user_id",typeid:23,uuid:"ADCF9642-B181-4035-BD49-F21F2EE5C9B7"}
+],
+joinType:1,
+name:"adn_usuarios_to_cfg_permisos_2",
+primaryDataSource:"db:/peluqueria/adn_usuarios",
+typeid:22,
+uuid:"E2510AC2-62D8-4254-B19C-70B0501A2AC0"

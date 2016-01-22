@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/cfg_permisos",
+items:[
+{foreignColumnName:"form_id",primaryDataProviderID:"form_id",typeid:23,uuid:"21C44DD9-4F51-45B9-91E9-8914CE58EDA7"}
+],
+joinType:1,
+name:"cfg_formularios_to_cfg_permisos",
+primaryDataSource:"db:/peluqueria/cfg_formularios",
+typeid:22,
+uuid:"0265D45F-8CA4-4FB9-B87F-72774C0A611B"
