@@ -22,13 +22,14 @@ function obtenerPermisos(lnk_form, lnk_user){
 /**
  * @AllowToRunInFind
  * 
+ * @param lnk_form_padre
  * @param lnk_tipo_form
  * @param lnk_form
  * @param lnk_nombre_opcion
  *
  * @properties={typeid:24,uuid:"24DE5CEB-0DF9-4326-AF4D-B7A4E164D7E7"}
  */
-function grabarFormUUID(lnk_form, lnk_nombre_opcion,lnk_tipo_form){
+function grabarFormUUID(lnk_form, lnk_nombre_opcion,lnk_tipo_form,lnk_form_padre){
 	var ds = security.getElementUUIDs(lnk_form)
 	var uuid = ds.getValue(1,2)
 	/** @type {JSFoundset<db:/peluqueria/cfg_formularios>}*/
@@ -41,9 +42,13 @@ function grabarFormUUID(lnk_form, lnk_nombre_opcion,lnk_tipo_form){
 		fs_forms.form_uuid = uuid
 		fs_forms.opcion_nombre = lnk_nombre_opcion
 		fs_forms.form_tipo = lnk_tipo_form
+		fs_forms.form_padre_id = lnk_form_padre
 		databaseManager.saveData(fs_forms)
 	}else{
 		fs_forms.opcion_nombre = lnk_nombre_opcion
+		fs_forms.form_uuid = uuid
+		fs_forms.form_tipo = lnk_tipo_form
+		fs_forms.form_padre_id = lnk_form_padre
 		databaseManager.saveData(fs_forms)
 	}
 }
@@ -114,45 +119,6 @@ function validarPermisos(lnk_user, lnk_form, lnk_accion){
 			break;
 				
 			}
-		
-/*		fs_permisos.permiso_tipo = 5
-		if(fs_permisos.search() == 0){
-			fs_permisos.find()
-			switch(lnk_accion){
-				case 1:
-				fs_permisos.permiso_tipo = 1
-				if(fs_permisos.search() != 0){
-					forms[lnk_form].elements['btn_grabar'].enabled = true
-				}else{
-					forms[lnk_form].elements['btn_grabar'].enabled = false
-				}
-				break;
-				case 2:
-				fs_permisos.permiso_tipo = 2
-				if(fs_permisos.search() != 0){
-					forms[lnk_form].elements['btn_nuevo'].enabled = true
-				}else{
-					forms[lnk_form].elements['btn_nuevo'].enabled = false
-				}
-				break;
-				case 3:
-				fs_permisos.permiso_tipo = 3
-				if(fs_permisos.search() != 0){
-					forms[lnk_form].elements['btn_borrar'].enabled = true
-				}else{
-					forms[lnk_form].elements['btn_borrar'].enabled = false
-				}
-				break;
-				case 4:
-				fs_permisos.permiso_tipo = 4
-				if(fs_permisos.search() != 0){
-					forms[lnk_form].elements['btn_imprimir'].enabled = true
-				}else{
-					forms[lnk_form].elements['btn_imprimir'].enabled = false
-				}
-				break;
-			}
-		}*/
 	}
 }
 
@@ -181,22 +147,6 @@ function checkearAdmin(lnk_user_id, lnk_form_id, lnk_botones, lnk_form_nombre){
 	return false
 	}
 	return false
-	/*if(lnk_permisos != null){
-	/** @type {JSFoundset<db:/peluqueria/cfg_permisos>}*/
-	/*var fs_permisos = lnk_permisos
-	fs_permisos.find()
-	fs_permisos.form_id = lnk_form_id
-	fs_permisos.permiso_tipo = 5
-	if(fs_permisos.search() != 0){
-		for (var index = 0; index < lnk_botones.length; index++) {
-			forms[lnk_form_nombre].elements[lnk_botones[index]].enabled = true
-		}
-		return true
-	}
-		return false
-	}else{
-		return false
-	}*/
 }
 
 /**
@@ -257,7 +207,7 @@ function grabarPermisosIniciales(lnk_user_id){
 /**
  * @AllowToRunInFind
  * 
- * TODO generated, please specify type and doc for the params
+ * 
  * @param lnk_form_id
  *
  * @properties={typeid:24,uuid:"C9C7CFEF-9998-4C90-A99A-AE54A5421A91"}
@@ -269,6 +219,48 @@ function getFormNombre(lnk_form_id){
 	fs_forms.form_id = lnk_form_id
 	if(fs_forms.search() != 0){
 		return fs_forms.form_nombre
+	}
+	return null
+}
+
+/**
+ * 
+ * 
+ * @param lnk_user_id
+ * @param lnk_form_id
+ * 
+ *
+ * @properties={typeid:24,uuid:"0CB783D1-00C7-411F-A9A3-433171887CA5"}
+ */
+function validarPermisosPadre(lnk_form_id,lnk_user_id){
+	var form_nombre = getFormNombre(lnk_form_id)
+	var form_padre_id = getFormPadre(lnk_form_id)
+	var lnk_permisos = obtenerPermisos(form_padre_id,lnk_user_id)
+	if(lnk_permisos != null){
+		/** @type {JSFoundset<db:/peluqueria/cfg_permisos_2>}*/
+		var fs_permisos = lnk_permisos
+		if(fs_permisos.cfg_perm_grabar == 1){
+			forms[form_nombre].elements['btn_grabar'].enabled = true
+		}else{
+			forms[form_nombre].elements['btn_grabar'].enabled = false
+		}
+	}
+}
+
+/**
+ * 
+ * @param lnk_form_id
+ *
+ * @properties={typeid:24,uuid:"CCC01E0F-9538-4372-9328-96EE76F647DC"}
+ * @AllowToRunInFind
+ */
+function getFormPadre(lnk_form_id){
+	/** @type {JSFoundset<db:/peluqueria/cfg_formularios>}*/
+	var fs_forms = databaseManager.getFoundSet('peluqueria','cfg_formularios')
+	fs_forms.find()
+	fs_forms.form_id = lnk_form_id
+	if(fs_forms.search() != 0){
+		return fs_forms.form_padre_id
 	}
 	return null
 }
