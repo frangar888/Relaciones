@@ -78,12 +78,18 @@ function getFormID(lnk_form_nombre){
  * @param lnk_user
  * @param lnk_form
  * @param lnk_accion
+ * @param lnk_nombre_form
  *
  * @properties={typeid:24,uuid:"1AA1626C-9D1C-4AD0-A866-17F42F697B18"}
  * @AllowToRunInFind
  */
-function validarPermisos(lnk_user, lnk_form, lnk_accion){
-	var form_nombre = getFormNombre(lnk_form)
+function validarPermisos(lnk_user, lnk_form, lnk_accion,lnk_nombre_form){
+	var form_nombre
+	if(lnk_nombre_form == null){
+		form_nombre = getFormNombre(lnk_form)
+	}else{
+		form_nombre = lnk_nombre_form
+	}
 	var lnk_permisos = obtenerPermisos(lnk_form,lnk_user)
 	if(lnk_permisos != null){
 		/** @type {JSFoundset<db:/peluqueria/cfg_permisos_2>}*/

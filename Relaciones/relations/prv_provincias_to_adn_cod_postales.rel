@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/adn_cod_postales",
+items:[
+{foreignColumnName:"provincia_id",primaryDataProviderID:"provincia_id",typeid:23,uuid:"958DE292-5C66-4EA3-A616-52441743BDC9"}
+],
+joinType:1,
+name:"prv_provincias_to_adn_cod_postales",
+primaryDataSource:"db:/peluqueria/prv_provincias",
+typeid:22,
+uuid:"703B99AF-34C2-42D7-8378-DB89B41E4389"
