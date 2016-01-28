@@ -1,4 +1,18 @@
 /**
+ * @type {Date}
+ *
+ * @properties={typeid:35,uuid:"866389BE-92A9-4569-A35A-FB63A256DCA6",variableType:93}
+ */
+var vg_fecha_final = null;
+
+/**
+ * @type {Date}
+ *
+ * @properties={typeid:35,uuid:"856D485D-A2DA-405D-AEE7-4C5A0CA5326D",variableType:93}
+ */
+var vg_fecha_inicial = null;
+
+/**
  * 
  * @param lnk_form
  * @param lnk_user
@@ -95,6 +109,8 @@ function validarPermisos(lnk_user, lnk_form, lnk_accion,lnk_nombre_form){
 		/** @type {JSFoundset<db:/peluqueria/cfg_permisos_2>}*/
 		var fs_permisos = lnk_permisos
 			switch(lnk_accion){
+				case 0:
+					break;
 			case 1:
 				if(fs_permisos.cfg_perm_grabar == 1){
 					forms[form_nombre].elements['btn_grabar'].enabled = true
