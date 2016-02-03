@@ -286,3 +286,30 @@ function getFormPadre(lnk_form_id){
 	}
 	return null
 }
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param lnk_prd_id
+ *
+ * @properties={typeid:24,uuid:"CA14A48B-80F5-4573-AA37-0D8BCEB20FC6"}
+ * @AllowToRunInFind
+ */
+function obtieneStock(lnk_prd_id){
+	var cantPrd = 0
+	/** @type {JSFoundset<db:/peluqueria/prd_movimientos>}*/
+	var fs_prd_mov = databaseManager.getFoundSet('peluqueria','prd_movimientos')
+	fs_prd_mov.loadAllRecords()
+	fs_prd_mov.find()
+	fs_prd_mov.prd_id = lnk_prd_id
+	if(fs_prd_mov.search() != 0){
+		var cant = databaseManager.getFoundSetCount(fs_prd_mov)
+		for (var index = 1; index <= cant; index++) {
+			var record = fs_prd_mov.getRecord(index);
+			cantPrd += record.mov_ing
+			cantPrd -= record.mov_egr
+		}
+		return cantPrd
+	}else{
+		return 0
+	}
+}

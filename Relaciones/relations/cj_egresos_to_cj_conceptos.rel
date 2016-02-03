@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/cj_conceptos",
+items:[
+{foreignColumnName:"conc_cod",primaryDataProviderID:"conc_cod",typeid:23,uuid:"E08B6E08-24B5-4ADA-8130-A8399CE59251"}
+],
+joinType:1,
+name:"cj_egresos_to_cj_conceptos",
+primaryDataSource:"db:/peluqueria/cj_egresos",
+typeid:22,
+uuid:"691BF2D1-2D73-4C84-B843-DEE5B36C07E3"
