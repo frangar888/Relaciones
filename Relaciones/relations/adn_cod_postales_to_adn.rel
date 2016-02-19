@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/adn",
+items:[
+{foreignColumnName:"cod_postal_id",primaryDataProviderID:"cod_postal_id",typeid:23,uuid:"A81BA00F-DD6A-48F7-ADAA-0B1DB68039C5"}
+],
+joinType:1,
+name:"adn_cod_postales_to_adn",
+primaryDataSource:"db:/peluqueria/adn_cod_postales",
+typeid:22,
+uuid:"A7A9B828-6A8C-44F9-848F-12B6160E4B93"
