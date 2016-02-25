@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/pel_ventas",
+items:[
+{foreignColumnName:"venta_id",primaryDataProviderID:"venta_id",typeid:23,uuid:"6889D68C-C13A-430A-B86E-EA83046E6D43"}
+],
+joinType:1,
+name:"cj_ingresos_to_pel_ventas",
+primaryDataSource:"db:/peluqueria/cj_ingresos",
+typeid:22,
+uuid:"2A8FC45C-4A1E-49E3-BE63-0ED39384F37D"
