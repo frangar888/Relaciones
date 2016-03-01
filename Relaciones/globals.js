@@ -1,4 +1,11 @@
 /**
+ * @type {Number}
+ *
+ * @properties={typeid:35,uuid:"8EFD9FC0-8201-4E81-83A7-0B3ECE835CA4",variableType:4}
+ */
+var vg_rubro = null;
+
+/**
  * @type {Date}
  *
  * @properties={typeid:35,uuid:"866389BE-92A9-4569-A35A-FB63A256DCA6",variableType:93}
