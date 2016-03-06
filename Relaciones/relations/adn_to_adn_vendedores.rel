@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/adn_vendedores",
+items:[
+{foreignColumnName:"adn_id",primaryDataProviderID:"adn_id",typeid:23,uuid:"7C983C52-C7A1-4D3F-9527-6F6ED30236D1"}
+],
+joinType:1,
+name:"adn_to_adn_vendedores",
+primaryDataSource:"db:/peluqueria/adn",
+typeid:22,
+uuid:"2AD26DEB-A974-4D4A-8344-AF5822798912"

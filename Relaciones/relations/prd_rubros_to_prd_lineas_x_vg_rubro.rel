@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/prd_lineas",
+items:[
+{foreignColumnName:"rubro_id",primaryDataProviderID:"scopes.globals.vg_rubro",typeid:23,uuid:"865813E1-4FA6-4133-BD09-F8C950227EF1"}
+],
+joinType:1,
+name:"prd_rubros_to_prd_lineas_x_vg_rubro",
+primaryDataSource:"db:/peluqueria/prd_rubros",
+typeid:22,
+uuid:"79BA7A6B-2338-4C6D-9660-AA863466F02B"

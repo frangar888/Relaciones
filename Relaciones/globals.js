@@ -146,6 +146,13 @@ function validarPermisos(lnk_user, lnk_form, lnk_accion,lnk_nombre_form){
 					forms[form_nombre].elements['btn_imprimir'].enabled = false
 				}
 			break;
+			case 5:
+				if(fs_permisos.cfg_perm_admin == 1){
+					forms[form_nombre].elements['btn_admin'].enabled = true
+				}else{
+					forms[form_nombre].elements['btn_admin'].enabled = false
+				}
+			break;
 				
 			}
 	}
