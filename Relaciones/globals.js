@@ -327,3 +327,5 @@ function obtieneStock(lnk_prd_id){
 		return 0
 	}
 }
+
+
