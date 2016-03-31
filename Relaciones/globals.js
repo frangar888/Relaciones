@@ -329,3 +329,50 @@ function obtieneStock(lnk_prd_id){
 }
 
 
+
+/**
+ * 
+ * @param lnk_fecha 
+ * @properties={typeid:24,uuid:"0A4A339F-0F9F-4E81-9A24-DACAF8C7A395"}
+ * @AllowToRunInFind
+ */
+function obtenerSaldoIni(lnk_fecha) {
+	var ing = 0
+	var egr = 0
+	var cant = 0
+	var saldo = 0
+	var fec_ini = new Date(1)
+	var fec_fin = new Date()
+	fec_fin = lnk_fecha
+	fec_fin.setDate(lnk_fecha.getDate()-1)
+	/** @type {JSFoundset<db:/peluqueria/cj_ingresos>}*/
+	var fs_ing = databaseManager.getFoundSet('peluqueria','cj_ingresos')
+	
+	/** @type {JSFoundset<db:/peluqueria/cj_egresos>}*/
+	var fs_egr = databaseManager.getFoundSet('peluqueria','cj_egresos')
+	
+	fs_ing.loadAllRecords()
+	fs_ing.find()
+	fs_ing.cj_ing_fecha = utils.dateFormat(fec_ini,'yyyy-MM-dd') + ' 00:00:00...' + utils.dateFormat(fec_fin,'yyyy-MM-dd') + ' 23:59:59|yyyy-MM-dd HH:mm:ss'
+	if(fs_ing.search() != 0){
+		cant = databaseManager.getFoundSetCount(fs_ing)
+		for (var index = 1; index <= cant; index++) {
+			var record = fs_ing.getRecord(index);
+			ing += record.cj_ing_importe
+		}
+	}
+	
+	fs_egr.loadAllRecords()
+	fs_egr.find()
+	fs_egr.cj_egr_fecha = utils.dateFormat(fec_ini,'yyyy-MM-dd') + ' 00:00:00...' + utils.dateFormat(fec_fin,'yyyy-MM-dd') + ' 23:59:59|yyyy-MM-dd HH:mm:ss'
+	if(fs_egr.search() != 0){
+		cant = databaseManager.getFoundSetCount(fs_egr)
+		for (var index1 = 1; index1 <= cant; index1++) {
+			var record1 = fs_egr.getRecord(index1);
+			egr += record1.cj_egr_importe
+		}
+	}
+	
+	saldo = ing - egr
+	return saldo
+}
