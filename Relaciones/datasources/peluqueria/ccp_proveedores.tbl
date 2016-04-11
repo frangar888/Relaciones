@@ -1,0 +1,11 @@
+dataSource:"db:/peluqueria/ccp_proveedores",
+items:[
+{
+dataProviderIDToAggregate:"proveedor_id",
+name:"aggr_cant_proveedores",
+typeid:40,
+uuid:"EC74AA87-A834-4775-9EB7-D37773210011"
+}
+],
+typeid:39,
+uuid:"595A8251-481A-41FC-95F5-E22005ADCF9D"

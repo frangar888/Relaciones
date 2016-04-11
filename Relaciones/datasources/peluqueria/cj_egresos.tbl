@@ -1,6 +1,12 @@
 dataSource:"db:/peluqueria/cj_egresos",
 items:[
 {
+dataProviderIDToAggregate:"cj_egr_idj",
+name:"aggr_cant_mov_egr",
+typeid:40,
+uuid:"26A03104-69CC-402E-A324-F9FE2B4DAB95"
+},
+{
 dataProviderIDToAggregate:"cj_egr_importe",
 name:"aggr_egr_imp_total",
 type:4,

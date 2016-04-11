@@ -1,6 +1,12 @@
 dataSource:"db:/peluqueria/cj_ingresos",
 items:[
 {
+dataProviderIDToAggregate:"cj_ing_id",
+name:"aggr_cant_mov_ing",
+typeid:40,
+uuid:"4A9A7528-E7B5-4CCB-B6D8-46B902BEFC18"
+},
+{
 dataProviderIDToAggregate:"cj_ing_importe",
 name:"aggr_ing_imp_total",
 type:4,
