@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/adn_usuarios",
+items:[
+{foreignColumnName:"user_id",primaryDataProviderID:"user_id",typeid:23,uuid:"A6645DF9-625D-4A4C-88C2-D6C501A0D6F2"}
+],
+joinType:1,
+name:"prd_precios_log_to_adn_usuarios",
+primaryDataSource:"db:/peluqueria/prd_precios_log",
+typeid:22,
+uuid:"45629412-B49A-4479-999B-CF030669DC82"

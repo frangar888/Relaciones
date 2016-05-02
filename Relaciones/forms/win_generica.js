@@ -46,6 +46,7 @@ function onActionSi(event) {
 		return
 	}else{
 		forms[vl_form_si][vl_accion_si]()
+		application.getWindow("ventanaGenerica").hide()
 		//application.getWindow().hide()
 	}
 }

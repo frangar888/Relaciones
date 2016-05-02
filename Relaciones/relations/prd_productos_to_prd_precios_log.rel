@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/peluqueria/prd_precios_log",
+items:[
+{foreignColumnName:"prd_id",primaryDataProviderID:"prd_id",typeid:23,uuid:"57DF2152-7AA6-4C8D-AFAC-83031658F70B"}
+],
+joinType:1,
+name:"prd_productos_to_prd_precios_log",
+primaryDataSource:"db:/peluqueria/prd_productos",
+typeid:22,
+uuid:"ACB7AA8A-8252-4FA5-81E2-7B4FAFDE4EC6"
