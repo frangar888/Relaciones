@@ -376,3 +376,38 @@ function obtenerSaldoIni(lnk_fecha) {
 	saldo = ing - egr
 	return saldo
 }
+
+/**
+ * @properties={typeid:24,uuid:"54AFBA75-D78C-4ED6-8F3C-B3712016DB2A"}
+ * @AllowToRunInFind
+ */
+function calcularSaldoCliente(lnk_adn_id) {
+	var saldo = 0
+	/** @type {JSFoundset<db:/peluqueria/pel_ventas>}*/
+	var fs_vtas = databaseManager.getFoundSet('peluqueria','pel_ventas')
+	fs_vtas.loadAllRecords()
+	fs_vtas.find()
+	fs_vtas.adn_id = lnk_adn_id
+	fs_vtas.search()
+	var cant = databaseManager.getFoundSetCount(fs_vtas)
+	for (var index = 1; index <= cant; index++) {
+		var record = fs_vtas.getRecord(index);
+		saldo += record.calc_saldo_vta
+	}
+	return saldo
+}
+
+/**
+ * @properties={typeid:24,uuid:"86E619DD-EB63-4827-A931-9D5D11330A74"}
+ * @AllowToRunInFind
+ */
+function obtenerAdnConsFinal() {
+	/** @type {JSFoundset<db:/peluqueria/ccc_clientes>}*/
+	var fs_ccc = databaseManager.getFoundSet('peluqueria','ccc_clientes')
+	fs_ccc.loadAllRecords()
+	fs_ccc.find()
+	fs_ccc.c_codigo = "0"
+	fs_ccc.search() != 0
+	return fs_ccc.adn_id
+	
+}
